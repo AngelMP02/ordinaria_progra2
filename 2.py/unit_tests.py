@@ -1,21 +1,29 @@
-from architectural_domain import BuildingType,Building,ArchitecturalStyle
-from structural_domain import StructuralDesign,StructuralElement,StructuralMaterial
+# unit_tests.py
 
-def test_building_creation():
-    residential_type = BuildingType("Residential")
-    modern_style = ArchitecturalStyle("Modern", ["Simplicity", "Clean lines"])
+import unittest
+from architectural_domain import BuildingType, Building, ArchitecturalStyle
+from structural_domain import StructuralDesign, StructuralElement, StructuralMaterial
 
-    house = Building("My House", residential_type, modern_style)
+class TestBuildingAndStructuralElementCreation(unittest.TestCase):
 
-    assert house.name == "My House"
-    assert house.building_type == residential_type
-    assert house.architectural_style == modern_style
+    def test_building_creation(self):
+        residential_type = BuildingType("Residential")
+        modern_style = ArchitecturalStyle("Modern", ["Simplicity", "Clean lines"])
 
-def test_structural_element_creation():
-    concrete_design = StructuralDesign("Concrete Design")
-    steel_material = StructuralMaterial("Steel", 500)  # Strength in some unit
+        house = Building("My House", residential_type, modern_style)
 
-    column = StructuralElement(concrete_design, steel_material)
+        self.assertEqual(house.name, "My House")
+        self.assertEqual(house.building_type, residential_type)
+        self.assertEqual(house.architectural_style, modern_style)
 
-    assert column.design == concrete_design
-    assert column.material == steel_material
+    def test_structural_element_creation(self):
+        concrete_design = StructuralDesign("Concrete Design")
+        steel_material = StructuralMaterial("Steel", 500)  # Strength in some unit
+
+        column = StructuralElement(concrete_design, steel_material)
+
+        self.assertEqual(column.design, concrete_design)
+        self.assertEqual(column.material, steel_material)
+
+if __name__ == '__main__':
+    unittest.main()
