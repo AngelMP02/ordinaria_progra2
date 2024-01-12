@@ -2,11 +2,11 @@
 
 import unittest
 from architectural_domain import BuildingType, Building, ArchitecturalStyle
-from structural_domain import StructuralDesign, StructuralElement, StructuralMaterial
+from project_management_domain import Project, ConstructionStage
 
-class TestBuildingAndStructuralElementCreation(unittest.TestCase):
+class TestBuildingAndConstruction(unittest.TestCase):
 
-    def test_building_creation(self):
+    def test_building_creation_and_construction_stage(self):
         residential_type = BuildingType("Residential")
         modern_style = ArchitecturalStyle("Modern", ["Simplicity", "Clean lines"])
 
@@ -16,14 +16,15 @@ class TestBuildingAndStructuralElementCreation(unittest.TestCase):
         self.assertEqual(house.building_type, residential_type)
         self.assertEqual(house.architectural_style, modern_style)
 
-    def test_structural_element_creation(self):
-        concrete_design = StructuralDesign("Concrete Design")
-        steel_material = StructuralMaterial("Steel", 500)  # Strength in some unit
+        project = Project("Dream Project")
+        construction_stage = ConstructionStage("Foundation")
 
-        column = StructuralElement(concrete_design, steel_material)
+        house.add_construction_stage(construction_stage)
+        project.add_construction_stage(construction_stage)
 
-        self.assertEqual(column.design, concrete_design)
-        self.assertEqual(column.material, steel_material)
+        self.assertEqual(len(house.construction_stages), 1)
+        self.assertEqual(len(project.construction_stages), 1)
+        self.assertEqual(len(construction_stage.buildings), 1)
 
 if __name__ == '__main__':
     unittest.main()

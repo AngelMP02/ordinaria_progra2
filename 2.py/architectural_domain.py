@@ -13,3 +13,7 @@ class Building:
         self.name = name
         self.building_type = building_type
         self.architectural_style = architectural_style
+        self.construction_stages = []
+
+    def add_construction_stage(self, construction_stage):
+        self.construction_stages.append(construction_stage)
