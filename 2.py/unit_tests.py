@@ -1,5 +1,6 @@
 from architectural_domain import BuildingType,Building,ArchitecturalStyle
 from structural_domain import StructuralDesign,StructuralElement,StructuralMaterial
+
 def test_building_creation():
     residential_type = BuildingType("Residential")
     modern_style = ArchitecturalStyle("Modern", ["Simplicity", "Clean lines"])
