@@ -8,11 +8,11 @@ class Project:
     def add_construction_stage(self, construction_stage):
         self.construction_stages.append(construction_stage)
 
-   
     def get_project_status(self):
-        # Devolver el estado actual del proyecto
-        pass
-
+        if any(construction_stage.buildings for construction_stage in self.construction_stages):
+            return "In Progress"
+        else:
+            return "Not Started"
 class ConstructionStage:
     def __init__(self, name):
         self.name = name
