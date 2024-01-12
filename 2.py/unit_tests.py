@@ -2,7 +2,9 @@
 
 import unittest
 from architectural_domain import BuildingType, Building, ArchitecturalStyle
+from structural_domain import StructuralDesign, StructuralElement, StructuralMaterial
 from project_management_domain import Project, ConstructionStage
+from regulation_domain import Law, Regulation
 
 class TestBuildingAndConstruction(unittest.TestCase):
 
