@@ -1,5 +1,6 @@
 # project_management_domain.py
 
+
 class Project:
     def __init__(self, name):
         self.name = name
@@ -9,10 +10,11 @@ class Project:
         self.construction_stages.append(construction_stage)
 
     def get_project_status(self):
-        if any(construction_stage.buildings for construction_stage in self.construction_stages):
+        if any(building for construction_stage in self.construction_stages for building in construction_stage.buildings):
             return "In Progress"
         else:
             return "Not Started"
+
 class ConstructionStage:
     def __init__(self, name):
         self.name = name

@@ -21,14 +21,3 @@ class Building:
         self.construction_stages.append(construction_stage)
         construction_stage.add_building(self)
 
-    def add_construction_stage(self, construction_stage):
-        self.construction_stages.append(construction_stage)
-
-    
-    def calculate_total_area(self):
-        # Lógica para calcular el área total del edificio
-        pass
-
-    def get_building_details(self):
-        # Devolver detalles específicos del edificio
-        pass
