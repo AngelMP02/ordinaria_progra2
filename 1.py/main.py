@@ -1,6 +1,5 @@
 # main.py
 from edificio import *
-
 from fabrica_edificios import *
 from estilos import *
 
