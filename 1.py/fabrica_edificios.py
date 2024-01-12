@@ -1,13 +1,32 @@
-class FabricaEdificios:
-    def __init__(self):
-        self.prototipos = {}
+# fabrica_edificios.py
+from abc import ABC, abstractmethod
+from edificio import EdificioResidencial, EdificioComercial, EdificioIndustrial
 
-    def establecer_prototipo(self, tipo, prototipo):
-        self.prototipos[tipo] = prototipo
+class CreadorEdificios(ABC):
+    @abstractmethod
+    def crear_edificio(self):
+        pass
 
-    def crear_edificio(self, tipo):
-        try:
-            prototipo = self.prototipos[tipo]
-            return prototipo.duplica()
-        except KeyError:
-            raise ValueError(f"No se ha establecido un prototipo para el tipo de edificio: {tipo}")
+class CreadorResidencial(CreadorEdificios):
+    def __init__(self, estilo, numero_habitaciones):
+        self.estilo = estilo
+        self.numero_habitaciones = numero_habitaciones
+
+    def crear_edificio(self):
+        return EdificioResidencial(self.estilo, self.numero_habitaciones)
+
+class CreadorComercial(CreadorEdificios):
+    def __init__(self, estilo, area_venta):
+        self.estilo = estilo
+        self.area_venta = area_venta
+
+    def crear_edificio(self):
+        return EdificioComercial(self.estilo, self.area_venta)
+
+class CreadorIndustrial(CreadorEdificios):
+    def __init__(self, estilo, capacidad_produccion):
+        self.estilo = estilo
+        self.capacidad_produccion = capacidad_produccion
+
+    def crear_edificio(self):
+        return EdificioIndustrial(self.estilo, self.capacidad_produccion)
